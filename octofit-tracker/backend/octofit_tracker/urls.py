@@ -30,15 +30,15 @@ router.register(r'workouts', WorkoutViewSet)
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
-        'users': request.build_absolute_uri('/users/'),
-        'teams': request.build_absolute_uri('/teams/'),
-        'activities': request.build_absolute_uri('/activities/'),
-        'leaderboard': request.build_absolute_uri('/leaderboard/'),
-        'workouts': request.build_absolute_uri('/workouts/'),
+           'users': request.build_absolute_uri('/api/users/'),
+           'teams': request.build_absolute_uri('/api/teams/'),
+           'activities': request.build_absolute_uri('/api/activities/'),
+           'leaderboard': request.build_absolute_uri('/api/leaderboard/'),
+           'workouts': request.build_absolute_uri('/api/workouts/'),
     })
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', api_root, name='api-root'),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]
